@@ -7,19 +7,19 @@ class PropertyForm extends Component {
       <div className="PropertyForm">
         <form className="property-form">
           <div className="property-form-input-container">
-            <label>Address:</label>
+            <span> Address:</span>
             <input className="property-form__input" />
           </div>
           <div className="property-form-input-container">
-            <label>City:</label>
+            <span> City:</span>
             <input className="property-form__input" />
           </div>
           <div className="property-form-input-container">
-            <label>State:</label>
+            <span> State:</span>
             <input className="property-form__input" />
           </div>
           <div className="property-form-input-container">
-            <label>Zip Code:</label>
+            <span>Zip Code:</span>
             <input className="property-form__input" />
           </div>
 

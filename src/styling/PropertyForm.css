@@ -1,0 +1,30 @@
+.property-form {
+  margin: 4px;
+  border: 1px solid gainsboro;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-form-input-container span {
+  width: 132px;
+}
+
+.property-form-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 3px;
+}
+
+input.property-form__input {
+  width: 474px;
+  height: 24px;
+  border-radius: 2px;
+  border: 1px solid gray;
+}
+
+button.property-form__button {
+  padding: 8px;
+  margin: 4px;
+  cursor: pointer;
+}
