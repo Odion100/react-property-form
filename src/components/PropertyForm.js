@@ -36,7 +36,8 @@ export default class PropertyForm extends Component {
       address: "",
       city: "",
       state: "",
-      zip: ""
+      zip: "",
+      propertyData: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -48,9 +49,15 @@ export default class PropertyForm extends Component {
     const baseUrl = `https://api.estated.com/property/v3`;
     const query = `?token=${token}&address=${address}&city=${city}&state=${state}&zipcode=${zip}`;
     const url = baseUrl + query;
-    const propertyData = await axios.get(url);
-    console.log(this.state);
-    console.log(propertyData);
+    try {
+      const { data } = await axios.get(url);
+      const propertyData = data.properties;
+      this.setState({ propertyData });
+      console.log(this.state);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handleChange(e, prop) {
@@ -60,6 +67,7 @@ export default class PropertyForm extends Component {
   }
 
   render() {
+    const { propertyData } = this.state;
     return (
       <div className="PropertyForm">
         <form className="property-form" onSubmit={e => this.search(e)}>
@@ -79,6 +87,7 @@ export default class PropertyForm extends Component {
             value="Submit"
           />
         </form>
+        <div className="property-data">{JSON.stringify(propertyData)}</div>
       </div>
     );
   }
