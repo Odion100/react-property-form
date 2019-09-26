@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../styling/PropertyForm.css";
 import PropFormInput from "./PropFormInput";
+import loadingGif from "../images/loading.gif";
 import secrets from "../secrets";
 const { token } = secrets;
 
@@ -51,7 +52,7 @@ export default class PropertyForm extends Component {
     const url = baseUrl + query;
     try {
       const { data } = await axios.get(url);
-      const propertyData = data.properties;
+      const propertyData = JSON.stringify(data.properties) || "No Data Found";
       this.setState({ propertyData });
       console.log(this.state);
       console.log(data);
@@ -87,7 +88,7 @@ export default class PropertyForm extends Component {
             value="Submit"
           />
         </form>
-        <div className="property-data">{JSON.stringify(propertyData)}</div>
+        <div className="property-data">{propertyData}</div>
       </div>
     );
   }
