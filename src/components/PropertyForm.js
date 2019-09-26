@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../styling/PropertyForm.css";
 import PropFormInput from "./PropFormInput";
+import secrets from "../secrets";
+const { token } = secrets;
 
 const searchInputs = [
   {
@@ -38,10 +41,16 @@ export default class PropertyForm extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  search(e) {
+  async search(e) {
     e.preventDefault();
-
+    //const token = "SqiTETPrrWw2Bxr47Fcxkd1cJhNDUM";
+    const { address, city, state, zip } = this.state;
+    const baseUrl = `https://api.estated.com/property/v3`;
+    const query = `?token=${token}&address=${address}&city=${city}&state=${state}&zipcode=${zip}`;
+    const url = baseUrl + query;
+    const propertyData = await axios.get(url);
     console.log(this.state);
+    console.log(propertyData);
   }
 
   handleChange(e, prop) {
