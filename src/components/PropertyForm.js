@@ -5,22 +5,22 @@ import PropFormInput from "./PropFormInput";
 const searchInputs = [
   {
     key: 1,
-    value: "",
+    pointer: "address",
     caption: "Address"
   },
   {
     key: 2,
-    value: "",
+    pointer: "city",
     caption: "City"
   },
   {
     key: 3,
-    value: "",
+    pointer: "state",
     caption: "State"
   },
   {
     key: 4,
-    value: "",
+    pointer: "zip",
     caption: "Zip Code"
   }
 ];
@@ -30,22 +30,38 @@ export default class PropertyForm extends Component {
     super(props);
 
     this.state = {
-      searchInputs
+      address: "",
+      city: "",
+      state: "",
+      zip: ""
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   search(e) {
-    e.prventDefalut();
-    console.log(this.searchInputs);
+    e.preventDefault();
+
+    console.log(this.state);
   }
+
+  handleChange(e, prop) {
+    const state = {};
+    state[prop] = e.target.value;
+    this.setState(state);
+  }
+
   render() {
-    const { searchInputs, key } = this.state;
     return (
       <div className="PropertyForm">
         <form className="property-form" onSubmit={e => this.search(e)}>
           <div>
             {searchInputs.map(input => (
-              <PropFormInput caption={input.caption} key={input.key} />
+              <PropFormInput
+                caption={input.caption}
+                key={input.key}
+                handler={this.handleChange}
+                pointer={input.pointer}
+              />
             ))}
           </div>
           <input

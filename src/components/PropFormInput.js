@@ -9,7 +9,9 @@ class PropFormInput extends Component {
           <input
             type="text"
             className="property-form__input"
-            defaultValue={this.props.value}
+            onChange={e => {
+              this.props.handler(e, this.props.pointer);
+            }}
           />
         </label>
       </div>
