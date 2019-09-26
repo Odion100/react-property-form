@@ -10,20 +10,20 @@
   width: 132px;
 }
 
-.property-form-input-container {
+.property-form-input-container label {
   display: flex;
   justify-content: space-between;
   margin: 3px;
 }
 
-input.property-form__input {
+.property-form__input {
   width: 474px;
   height: 24px;
   border-radius: 2px;
   border: 1px solid gray;
 }
 
-button.property-form__button {
+.property-form__button {
   padding: 8px;
   margin: 4px;
   cursor: pointer;
