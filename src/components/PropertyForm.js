@@ -2,29 +2,24 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../styling/PropertyForm.css";
 import PropFormInput from "./PropFormInput";
-import loadingGif from "../images/loading.gif";
 import secrets from "../secrets";
 const { token } = secrets;
 
 const searchInputs = [
   {
-    key: 1,
-    pointer: "address",
+    key: "address",
     caption: "Address"
   },
   {
-    key: 2,
-    pointer: "city",
+    key: "city",
     caption: "City"
   },
   {
-    key: 3,
-    pointer: "state",
+    key: "state",
     caption: "State"
   },
   {
-    key: 4,
-    pointer: "zip",
+    key: "zip",
     caption: "Zip Code"
   }
 ];
@@ -61,9 +56,9 @@ export default class PropertyForm extends Component {
     }
   }
 
-  handleChange(e, prop) {
+  handleChange(e, key) {
     const state = {};
-    state[prop] = e.target.value;
+    state[key] = e.target.value;
     this.setState(state);
   }
 
@@ -78,7 +73,6 @@ export default class PropertyForm extends Component {
                 caption={input.caption}
                 key={input.key}
                 handler={this.handleChange}
-                pointer={input.pointer}
               />
             ))}
           </div>

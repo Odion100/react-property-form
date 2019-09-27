@@ -10,7 +10,7 @@ class PropFormInput extends Component {
             type="text"
             className="property-form__input"
             onChange={e => {
-              this.props.handler(e, this.props.pointer);
+              this.props.handler(e, this.props.key);
             }}
           />
         </label>
