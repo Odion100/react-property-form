@@ -7,19 +7,23 @@ const { token } = secrets;
 
 const searchInputs = [
   {
-    key: "address",
+    key: 1,
+    pointer: "address",
     caption: "Address"
   },
   {
-    key: "city",
+    key: 2,
+    pointer: "city",
     caption: "City"
   },
   {
-    key: "state",
+    key: 3,
+    pointer: "state",
     caption: "State"
   },
   {
-    key: "zip",
+    key: 4,
+    pointer: "zip",
     caption: "Zip Code"
   }
 ];
@@ -56,9 +60,9 @@ export default class PropertyForm extends Component {
     }
   }
 
-  handleChange(e, key) {
+  handleChange(e, prop) {
     const state = {};
-    state[key] = e.target.value;
+    state[prop] = e.target.value;
     this.setState(state);
   }
 
@@ -73,6 +77,7 @@ export default class PropertyForm extends Component {
                 caption={input.caption}
                 key={input.key}
                 handler={this.handleChange}
+                pointer={input.pointer}
               />
             ))}
           </div>
